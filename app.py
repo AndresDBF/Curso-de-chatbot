@@ -104,13 +104,47 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Hola, ¿cómo estás? Bienvenido"
             }
         }
+    elif "1" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": False,
+                "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corporis quia sit molestias rerum! Cumque, ut? Excepturi id amet, mollitia vero eligendi iure debitis veritatis cumque voluptatibus unde possimus quibusdam!"
+            }
+        }
+    elif "2" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "location": {
+                "latitude": "7.773414271044237",
+                "longitude": "-72.20275777341328",
+                "name": "Casa pirineos",
+                "address": "Pirineos 2 edificio 21"
+            }
+        }
+    elif "3" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "document",
+            "document": {
+                "link": "https://www.renfe.com/content/dam/renfe/es/General/PDF-y-otros/Ejemplo-de-descarga-pdf.pdf",
+                "caption": "Ejemplo de pdf"
+            }
+        }
     else:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
             "text": {
                 "preview_url": False,
-                "body": "Hola, ¿cómo estás? Aquí estamos contestando desde el else."
+                "body": f"🚀Hola, visita mi web para mas informacion
+                            📌Por favor, ingresa un numero #️⃣ para recibir informacion. \n 1️⃣ informacion del curso. ❔ \n 2️⃣ Ubicacion Local📍 \n  3️⃣ Audio explicando curso 🎧 \n 4️⃣ Video de indroduccion🎥\n 5️⃣ Habla conmigo🫡 \n  6️⃣ Horario de Atencion🕙 \n 0️⃣ Regresar al menu⏪"
             }
         }
     
