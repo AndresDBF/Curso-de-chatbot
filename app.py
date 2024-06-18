@@ -145,11 +145,8 @@ def verificar_token(req):
         return challenge
     else:
         return jsonify({'error':'Token Invalido'}),401
-
 def recibir_mensajes(req):
-    
     print("el req: ", req)
-    
     try:
         req_data = request.get_json()
         print("Datos JSON recibidos:", req_data)
@@ -159,23 +156,19 @@ def recibir_mensajes(req):
                 value = change.get('value', {})
                 messages = value.get('messages', [])
                 for message in messages:
-                    if message:
-                        messages_text = message[0]
-                        if "type" in messages_text:
-                            tipo = messages_text["type"]
-                            
-                            if tipo == "interactive":
-                                return 0
-                            if "text" in messages_text:
-                                text = messages_text["text"]["body"]
-                                numero = messages_text["from"]
-                         
-                                agregar_mensajes_log(text)
-                                agregar_mensajes_log(numero)
+                    if "type" in message:
+                        tipo = message["type"]
+                        
+                        if tipo == "interactive":
+                            continue
+                        if "text" in message:
+                            text = message["text"]["body"]
+                            numero = message["from"]
+                            agregar_mensajes_log({"numero": numero, "texto": text})
 
         return jsonify({'message': 'EVENT_RECEIVED'})
     except Exception as e:
-        print("Error al procesar el mensaje: s", e)
+        print("Error al procesar el mensaje:", e)
         return jsonify({'message': 'ERROR_PROCESSING_EVENT'}), 500
 
     
