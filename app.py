@@ -159,7 +159,19 @@ def recibir_mensajes(req):
                 value = change.get('value', {})
                 messages = value.get('messages', [])
                 for message in messages:
-                    agregar_mensajes_log(message)
+                    if message:
+                        messages_text = message[0]
+                        if "type" in messages_text:
+                            tipo = messages_text["type"]
+                            
+                            if tipo == "interactive":
+                                return 0
+                            if "text" in messages_text:
+                                text = messages_text["text"]["body"]
+                                numero = messages_text["from"]
+                         
+                                agregar_mensajes_log(text)
+                                agregar_mensajes_log(numero)
 
         return jsonify({'message': 'EVENT_RECEIVED'})
     except Exception as e:
