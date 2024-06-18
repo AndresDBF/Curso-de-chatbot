@@ -79,6 +79,7 @@ def recibir_mensajes(req):
                     if "type" in message:
                         tipo = message["type"]
                         agregar_mensajes_log({"tipo": tipo})
+                        agregar_mensajes_log({"mensaje": message})
                         if tipo == "interactive":
                             continue
                         if "text" in message:
