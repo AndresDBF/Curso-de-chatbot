@@ -47,7 +47,7 @@ def agregar_mensajes_log(texto):
 #agregar_mensajes_log(json.dumps("Test1"))
 
 #Token de verificacion para la configuracion
-TOKEN_CURSO = 'CURSOWHATSAPP'
+TOKEN_CURSO = "CURSOWHATSAPP"
 
 
 
