@@ -78,16 +78,15 @@ def recibir_mensajes(req):
                 for message in messages:
                     if "type" in message:
                         tipo = message["type"]
-                        
+                        agregar_mensajes_log({"tipo": tipo})
                         if tipo == "interactive":
                             continue
                         if "text" in message:
                             text = message["text"]["body"]
                             numero = message["from"]
-                            agregar_mensajes_log({"numero": numero})
-                            agregar_mensajes_log({ "texto": text})
+                            
                             enviar_mensajes_whatsapp(text, numero)
-
+                            agregar_mensajes_log({"mensaje": message})
         return jsonify({'message': 'EVENT_RECEIVED'})
     except Exception as e:
         print("Error al procesar el mensaje:", e)
@@ -187,6 +186,45 @@ def enviar_mensajes_whatsapp(texto, numero):
             "text": {
                 "preview_url": False,
                 "body": "🚀 Hola, visita mi web anderson-bastidas.com para más información.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Curso. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en PDF. 📄\n4️⃣. Audio explicando curso. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con AnderCode. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
+            }
+        }
+    elif "boton" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "interactive",
+            "interactive":{
+                "type": "button",
+                "body": {
+                    "text": "Confirmas tu registro?"
+                },
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
+                "action": {
+                    "buttons":[
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnsi",
+                                "title":"Si"
+                            }
+                        },{
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnno",
+                                "title":"No"
+                            }
+                        },{
+                            "type": "reply",
+                            "reply":{
+                                "id":"btntalvez",
+                                "title":"Tal Vez"
+                            }
+                        }
+                    ]
+                }
             }
         }
     else:
