@@ -84,6 +84,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import http.client
 import json
+import http.client
 
 app = Flask(__name__)
 
@@ -164,15 +165,56 @@ def recibir_mensajes(req):
                         if "text" in message:
                             text = message["text"]["body"]
                             numero = message["from"]
-                            agregar_mensajes_log({"numero": numero, "texto": text})
+                            agregar_mensajes_log({"numero": numero})
+                            agregar_mensajes_log({ "texto": text})
 
         return jsonify({'message': 'EVENT_RECEIVED'})
     except Exception as e:
         print("Error al procesar el mensaje:", e)
         return jsonify({'message': 'ERROR_PROCESSING_EVENT'}), 500
 
+def enviar_mensajes_whatsapp(texto,numero):
+    texto = texto.lower()
+    if "hola" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "text": {
+                "preview_url": False,
+                "body": "Hola como estas? bienvenido"
+            }
+        }
+    else:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "text": {
+                "preview_url": False,
+                "body": "Hola como estas? bienvenido aqui estamos contestando desde el else."
+            }
+        }
+    #convertir el diccionario a formato json
+    data = json.dumps(data)  
     
-
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer EAARqlwZAqLocBO4oOz4JmZCrpxbhZCO2hEvPDJ1Wm0VGBZAz4MlLt3yDXWKkt2EzNSjZA4eXA9Hq4VWj9WeIvmhbis4XlvdHODSZCqHm572tMAnFiNZBlMxFqtC4Tz9ZBop8Tugn0xAnfWFTcwDOe5E3q62dTTpeFmx7eoG9PHlypkdphTVp6dbCCGy3xO4s5zJEzOxvto3w8dSSWagMaFIZD"
+        
+    }
+    connection = http.client.HTTPSConnection("graph.facebook.com")
+    
+    try:
+        connection.request("POST", "/v19.0/373926142459719/messages", data, headers)
+        response = connection.getresponse()
+        print(response.status, response.reason)
+    except Exception as e:
+        agregar_mensajes_log(json.dumps(e))
+    finally:
+        connection.close()
 
  
 
