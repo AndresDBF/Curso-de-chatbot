@@ -81,7 +81,11 @@ def recibir_mensajes(req):
                         agregar_mensajes_log({"tipo": tipo})
                         agregar_mensajes_log({"mensaje": message})
                         if tipo == "interactive":
-                            continue
+                            tipo_interactivo = message["interactive"]["type"]
+                            if tipo_interactivo == "button_reply":
+                                text = message["interactive"]["button_reply"]["id"]
+                                numero = message["from"]
+                                enviar_mensajes_whatsapp(text, numero)
                         if "text" in message:
                             text = message["text"]["body"]
                             numero = message["from"]
@@ -226,6 +230,39 @@ def enviar_mensajes_whatsapp(texto, numero):
                         }
                     ]
                 }
+            }
+        }
+    elif "btnsi" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Muchas gracias por aceptar"
+            }
+        }
+    elif "btnno" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Es una lastima"
+            }
+        }
+    elif "btntalvez" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Estare a la espera"
             }
         }
     else:
