@@ -137,14 +137,33 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "caption": "Ejemplo de pdf"
             }
         }
+    elif "4" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "audio",
+            "audio": {
+                "link": "https://file-examples.com/wp-content/storage/2017/11/file_example_MP3_700KB.mp3",
+            }
+        }
     else:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
             "text": {
                 "preview_url": False,
-                "body": f"🚀Hola, visita mi web para mas informacion
-                            📌Por favor, ingresa un numero #️⃣ para recibir informacion. \n 1️⃣ informacion del curso. ❔ \n 2️⃣ Ubicacion Local📍 \n  3️⃣ Audio explicando curso 🎧 \n 4️⃣ Video de indroduccion🎥\n 5️⃣ Habla conmigo🫡 \n  6️⃣ Horario de Atencion🕙 \n 0️⃣ Regresar al menu⏪"
+                "body": (
+                    "🚀Hola, visita mi web para más información\n"
+                    "📌Por favor, ingresa un número #️⃣ para recibir información. \n"
+                    "1️⃣ Información del curso. ❔ \n"
+                    "2️⃣ Ubicación Local📍 \n"
+                    "3️⃣ Audio explicando curso 🎧 \n"
+                    "4️⃣ Video de introducción🎥\n"
+                    "5️⃣ Habla conmigo🫡 \n"
+                    "6️⃣ Horario de Atención🕙 \n"
+                    "0️⃣ Regresar al menú⏪"
+                )
             }
         }
     
