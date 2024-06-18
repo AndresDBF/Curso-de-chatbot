@@ -148,19 +148,24 @@ def verificar_token(req):
 
 def recibir_mensajes(req):
     
-  
+    print("el req: ", req)
+    
     try:
-        req = request.get_json()        
-        entry = req['entry'][0]
-        changes = entry['changes']
-        value = changes['value']
-        objeto_mensaje = value['messages']
+        req_data = request.get_json()
+        print("Datos JSON recibidos:", req_data)
         
-        agregar_mensajes_log(json.dumps(objeto_mensaje))
-        
-        return jsonify({'message':'EVENT_RECEIVED'})
+        for entry in req_data.get('entry', []):
+            for change in entry.get('changes', []):
+                value = change.get('value', {})
+                messages = value.get('messages', [])
+                for message in messages:
+                    agregar_mensajes_log(message)
+
+        return jsonify({'message': 'EVENT_RECEIVED'})
     except Exception as e:
-        return jsonify({'message':'EVENT_RECEIVED'})
+        print("Error al procesar el mensaje: s", e)
+        return jsonify({'message': 'ERROR_PROCESSING_EVENT'}), 500
+
     
 
 
