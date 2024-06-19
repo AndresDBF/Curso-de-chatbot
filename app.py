@@ -365,7 +365,7 @@ def enviar_mensajes_whatsapp(texto, numero):
     
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer EAARqlwZAqLocBO88kjMSlaBvprneWelp6fyLEWZBkyuqZCbalHy9CtHzdkG4rjcF2BA6zAQT7laTryyJPdDKQ5k8cPKfxZB1jiHLET3YWNFWiSZCIsUbSgiG14yIZBKELLhX1zYvjyabzFYr2MHdVRWoEJvWnkoKgZACXw0qKSIl1lOjeZAESCY5Wk1uGpfUjtGZBEBgddjsoBOMv41ELYFAZD"
+        "Authorization": "Bearer EAARqlwZAqLocBO58muUAQ5MS28LBYdPItxXlqJjP7IDeZBt2F5B8Bqeh0ZCAreKmWAm7Q2UDkme4uoZBwRgOBcHjacCbZApc5jwZAMUZAVGKHBCa26UeJJU9cWK0ZBzilE5JjH6fmQfQzZACi3JwrX02uLAnWOtqCHT3Uu9vh4IIZC20aYa6cXK5vhGICC5rh30wNcZCzZBZBGycTegVhYPKBY8wZD"
     }
     
     connection = http.client.HTTPSConnection("graph.facebook.com")
