@@ -104,7 +104,7 @@ def recibir_mensajes(req):
 
 def enviar_mensajes_whatsapp(texto, numero):
     texto = texto.lower()
-    if texto in ["hola", "buenas", "buenos", "como estás", "como estas", "cómo estas", "cómo estás?", "cómo estás"]:
+    if texto in ["hola", "buenas", "buenos", "hola buenas tardes", "hola buenas noches", "hola buenos dias", "como estás", "como estas", "cómo estas", "cómo estás?", "cómo estás", "como está", "como esta", "cómo esta", "cómo está?", "cómo está"]:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
