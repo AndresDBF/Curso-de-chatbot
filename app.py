@@ -347,7 +347,7 @@ def enviar_mensaje_separado(data: dict):
     
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer EAARqlwZAqLocBO58muUAQ5MS28LBYdPItxXlqJjP7IDeZBt2F5B8Bqeh0ZCAreKmWAm7Q2UDkme4uoZBwRgOBcHjacCbZApc5jwZAMUZAVGKHBCa26UeJJU9cWK0ZBzilE5JjH6fmQfQzZACi3JwrX02uLAnWOtqCHT3Uu9vh4IIZC20aYa6cXK5vhGICC5rh30wNcZCzZBZBGycTegVhYPKBY8wZD"
+        "Authorization": "Bearer EAARqlwZAqLocBO3vPb3uq9MQQYfuazRtORSBjfDuzJDddQQa6L8QP6zeK8LElj1VcBmGgWyoYBS41I19tyA9XNVrrySOuOf7ApGLVrcHDF6ObZCbNTgZAT3rWn7T5rS72lfZBWg3AMOAWSNj9CEClZAlTmfFlo5W7ZBJjAH1VfvCHMod0TBcnZBi2AbbQb8ZAgO3unhAAQyQTUBMBJ3Tdh0ZD"
     }
     
     connection = http.client.HTTPSConnection("graph.facebook.com")
