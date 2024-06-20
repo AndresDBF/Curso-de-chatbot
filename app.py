@@ -214,7 +214,7 @@ def enviar_mensajes_whatsapp(texto, numero):
             "to": numero,
             "type": "document",
             "document": {
-                "link": "https://kronopartsla.com/catalogoposeidon",
+                "link": "https://kronopartsla.com/catalogoposeidon.pdf",
                 "caption": "Catalogo General"
             }
         }
