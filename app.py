@@ -214,7 +214,7 @@ def enviar_mensajes_whatsapp(texto, numero):
             "to": numero,
             "type": "document",
             "document": {
-                "link": "https://www.renfe.com/content/dam/renfe/es/General/PDF-y-otros/Ejemplo-de-descarga-pdf.pdf",
+                "link": "https://kronopartsla.com/catalogoposeidon",
                 "caption": "Catalogo General"
             }
         }
