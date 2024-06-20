@@ -104,7 +104,7 @@ def recibir_mensajes(req):
 
 def enviar_mensajes_whatsapp(texto, numero):
     texto = texto.lower()
-    if texto in ["hola", "buenas", "buenos"]:
+    if texto in ["hola", "buenas", "buenos", "como estás", "como estas", "cómo estas", "cómo estás?", "cómo estás"]:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
@@ -114,7 +114,25 @@ def enviar_mensajes_whatsapp(texto, numero):
             }
         }
         enviar_mensaje_separado(data)
-    
+    elif "1" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": False,
+                "body": "Para comprobar el estado de su pedido porfavor ingrese su número de cédula"
+            }
+        }
+    elif "24694899" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": False,
+                "body": "Señor Ángel este es el estado de su pedido: \n ✅ Diseño \n ✅ Impresión \n ✅ sublimación \n ☑️ confección \n ☑️ entrega \n \n Se estima su pedido será terminado el 25-06-2024 \n \n Para volver al menú presione 0️⃣"
+            }
+        }
+        
     elif "2" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -272,6 +290,17 @@ def enviar_mensajes_whatsapp(texto, numero):
             }
         }
         enviar_mensaje_separado(data)
+    elif int(texto) > 11:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Las opciones que te ofrezco son un total de 11, consulta nuevamente cualquiera de las opciones asignadas."
+            }
+        }
     elif "0" in texto:
         data = {
             "messaging_product": "whatsapp",
