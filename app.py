@@ -123,6 +123,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Para comprobar el estado de su pedido porfavor ingrese su número de cédula"
             }
         }
+        enviar_mensaje_separado(data)
     elif "24694899" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -132,7 +133,7 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "Señor Ángel este es el estado de su pedido: \n ✅ Diseño \n ✅ Impresión \n ✅ sublimación \n ☑️ confección \n ☑️ entrega \n \n Se estima su pedido será terminado el 25-06-2024 \n \n Para volver al menú presione 0️⃣"
             }
         }
-        
+        enviar_mensaje_separado(data)
     elif "2" in texto:
         data = {
             "messaging_product": "whatsapp",
