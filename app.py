@@ -114,7 +114,7 @@ def enviar_mensajes_whatsapp(texto, numero):
             }
         }
         enviar_mensaje_separado(data)
-    elif "1" in texto:
+    elif int(texto) == 1:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
