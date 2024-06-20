@@ -114,6 +114,18 @@ def enviar_mensajes_whatsapp(texto, numero):
             }
         }
         enviar_mensaje_separado(data)
+    elif "*" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "sus datos han sido registrados su número de pedido es #648592 un asesor se comunicara con usted lo antes posible \n Para regresar al menú presione 0️⃣"
+            }
+        }
+        enviar_mensaje_separado(data)
     elif int(texto) == 1:
         data = {
             "messaging_product": "whatsapp",
@@ -314,18 +326,7 @@ def enviar_mensajes_whatsapp(texto, numero):
             }
         }
         enviar_mensaje_separado(data)
-    elif "*" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "sus datos han sido registrados su número de pedido es #648592 un asesor se comunicara con usted lo antes posible \n Para regresar al menú presione 0️⃣"
-            }
-        }
-        enviar_mensaje_separado(data)
+    
     else:
         data = {
             "messaging_product": "whatsapp",
