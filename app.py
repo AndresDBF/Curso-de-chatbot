@@ -104,24 +104,17 @@ def recibir_mensajes(req):
 
 def enviar_mensajes_whatsapp(texto, numero):
     texto = texto.lower()
-    if "hola" in texto:
+    if texto in ["hola", "buenas", "buenos"]:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
             "text": {
                 "preview_url": False,
-                "body": "Hola, ¿cómo estás? Bienvenido"
+                "body": "🚀Hola, somo Poseidon 🔱 la empresa líder en productos textiles de Venezuela información \n 📌Por favor, ingresa un número #️⃣ para recibir información. \n 1️⃣ Información del pedido. ❔ \n 2️⃣ Ubicaciónes en el país📍 \n 3️⃣ Solicitar una cotización 🧾 \n 4️⃣ Ver catálogo 📁 \n 5️⃣ Atención al Cliente🫡  \n 6️⃣ Horario de Atención🕙  \n 7️⃣ promociones disponibles 🔝 \n 8️⃣ Catalogo de jersey 100% sublimadas☑️ \n 9️⃣ Catalogo de franelas 100% sublimadas☑️ \n 1️⃣0️⃣ Catálogo de banderines 🏳️ \n 1️⃣1️⃣ Catálogo de lanyards🎗️"
             }
         }
-    elif "1" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "to": numero,
-            "text": {
-                "preview_url": False,
-                "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem corporis quia sit molestias rerum! Cumque, ut? Excepturi id amet, mollitia vero eligendi iure debitis veritatis cumque voluptatibus unde possimus quibusdam!"
-            }
-        }
+        enviar_mensaje_separado(data)
+    
     elif "2" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -129,13 +122,73 @@ def enviar_mensajes_whatsapp(texto, numero):
             "to": numero,
             "type": "location",
             "location": {
-                "latitude": "7.773414271044237",
-                "longitude": "-72.20275777341328",
-                "name": "Casa pirineos",
-                "address": "Pirineos 2 edificio 21"
+                "latitude": "7.770125285293934",
+                "longitude": "-72.22545480674617",
+                "name": "San Cristóbal tachira ",
+                "address": "Poseidon Productos Corporativos"
             }
         }
+        enviar_mensaje_separado(data)
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "location": {
+                "latitude": "10.247988913400468",
+                "longitude": "-68.00714085026388",
+                "name": "Valencia",
+                "address": "Conjunto Residencial Las Quintas"
+            }
+        }
+        enviar_mensaje_separado(data)
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "location": {
+                "latitude": "8.611486965609618",
+                "longitude": "-70.23774073373085",
+                "name": "Barinas",
+                "address": "Zeus Productos Corporativos"
+            }
+        }
+        enviar_mensaje_separado(data)
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": numero,
+            "type": "location",
+            "location": {
+                "latitude": "10.450597245285604",
+                "longitude": "-66.91428893080374",
+                "name": "Caracas",
+                "address": "Autolavado Poseidon"
+            }
+        }
+        enviar_mensaje_separado(data)
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": False,
+                "body": "Pulsa 0️⃣ para regresar al menú."
+            }
+        }
+        enviar_mensaje_separado(data)
+        
     elif "3" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": False,
+                "body": "3. Para solicitar una cotización llenar el siguiente formulario: \n - Nombre \n - ⁠cédula \n - ⁠teléfono \n- ⁠dirección \n \n Una vez estos datos sean suministrados se le asignará un número de pedido y será contactado por un asesor de ventas."
+            }
+        }
+        enviar_mensaje_separado(data)
+    elif "4" in texto:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -143,40 +196,21 @@ def enviar_mensajes_whatsapp(texto, numero):
             "type": "document",
             "document": {
                 "link": "https://www.renfe.com/content/dam/renfe/es/General/PDF-y-otros/Ejemplo-de-descarga-pdf.pdf",
-                "caption": "Ejemplo de pdf"
+                "caption": "Catalogo General"
             }
         }
-    elif "4" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "audio",
-            "audio": {
-                "link": "https://file-examples.com/wp-content/storage/2017/11/file_example_MP3_700KB.mp3",
-            }
-        }
+        enviar_mensaje_separado(data)
     elif "5" in texto:
         data = {
             "messaging_product": "whatsapp",
             "to": numero,
             "text": {
-                "preview_url": True,
-                "body": "Introduccion al curso https://youtu.be/"
-            }
-        }
-    elif "6" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
                 "preview_url": False,
-                "body": "En breve me pondre en contacto contigo"
+                "body": "atención al cliente lo mantiene"
             }
         }
-    elif "7" in texto:
+        enviar_mensaje_separado(data)
+    elif "6" in texto:
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -187,6 +221,57 @@ def enviar_mensajes_whatsapp(texto, numero):
                 "body": "📅 Horario de Atención : Lunes a Viernes. \n🕜 Horario : 9:00 am a 5:00 pm 🤓"
             }
         }
+        enviar_mensaje_separado(data)
+    elif "7" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": True,
+                "body": "Consulta todas nuestras ofertas en las historias del día de Instagram. \n https://www.instagram.com/poseidoncaracas?igsh=MWl1dnZhY3k3ZHR3NA=="
+            }
+        }
+        enviar_mensaje_separado(data)
+    elif "8" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": True,
+                "body": "8. Catálogo de jersey: \n Mira esta artículo en WhatsApp: \n https://wa.me/p/7247225908697331/584143756059"
+            }
+        }
+        enviar_mensaje_separado(data)
+    elif "9" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": True,
+                "body": "9. Catálogo de franelas: \n Mira esta artículo en WhatsApp: \n https://wa.me/p/24041477182162313/584143756059"
+            }
+        }
+        enviar_mensaje_separado(data)
+    elif "10" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": True,
+                "body": "10. Catálogo de banderines: \n Mira esta artículo en WhatsApp: \n https://wa.me/p/5995984790529996/584143756059"
+            }
+        }
+        enviar_mensaje_separado(data)
+    elif "11" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": numero,
+            "text": {
+                "preview_url": True,
+                "body": "11. Catálogo de lanyard: \n Mira esta artículo en WhatsApp: \n https://wa.me/p/5537247556399218/584143756059"
+            }
+        }
+        enviar_mensaje_separado(data)
     elif "0" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -195,152 +280,11 @@ def enviar_mensajes_whatsapp(texto, numero):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "🚀 Hola, visita mi web anderson-bastidas.com para más información.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Curso. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en PDF. 📄\n4️⃣. Audio explicando curso. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con AnderCode. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
+                "body": "📌Por favor, ingresa un número #️⃣ para recibir información. \n 1️⃣ Información del pedido. ❔ \n 2️⃣ Ubicaciónes en el país📍 \n 3️⃣ Solicitar una cotización 🧾 \n 4️⃣ Ver catálogo 📁 \n 5️⃣ Atención al Cliente🫡  \n 6️⃣ Horario de Atención🕙  \n 7️⃣ promociones disponibles 🔝 \n 8️⃣ Catalogo de jersey 100% sublimadas☑️ \n 9️⃣ Catalogo de franelas 100% sublimadas☑️ \n 1️⃣0️⃣ Catálogo de banderines 🏳️ \n 1️⃣1️⃣ Catálogo de lanyards🎗️"
             }
         }
-    elif "boton" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "interactive",
-            "interactive":{
-                "type": "button",
-                "body": {
-                    "text": "Confirmas tu registro?"
-                },
-                "footer": {
-                    "text": "Selecciona una de las opciones"
-                },
-                "action": {
-                    "buttons":[
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnsi",
-                                "title":"Si"
-                            }
-                        },{
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnno",
-                                "title":"No"
-                            }
-                        },{
-                            "type": "reply",
-                            "reply":{
-                                "id":"btntalvez",
-                                "title":"Tal Vez"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-    elif "btnsi" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Muchas gracias por aceptar"
-            }
-        }
-    elif "btnno" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Es una lastima"
-            }
-        }
-    elif "btntalvez" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Estare a la espera"
-            }
-        }
-    elif "lista" in texto:
-        data ={
-            "messaging_product": "whatsapp",
-            "to": numero,
-            "type": "interactive",
-            "interactive":{
-                "type" : "list",
-                "body": {
-                    "text": "Selecciona Alguna Opción"
-                },
-                "footer": {
-                    "text": "Selecciona una de las opciones para poder ayudarte"
-                },
-                "action":{
-                    "button":"Ver Opciones",
-                    "sections":[
-                        {
-                            "title":"Compra y Venta",
-                            "rows":[
-                                {
-                                    "id":"btncompra",
-                                    "title" : "Comprar",
-                                    "description": "Compra los mejores articulos de tecnologia"
-                                },
-                                {
-                                    "id":"btnvender",
-                                    "title" : "Vender",
-                                    "description": "Vende lo que ya no estes usando"
-                                }
-                            ]
-                        },{
-                            "title":"Distribución y Entrega",
-                            "rows":[
-                                {
-                                    "id":"btndireccion",
-                                    "title" : "Local",
-                                    "description": "Puedes visitar nuestro local."
-                                },
-                                {
-                                    "id":"btnentrega",
-                                    "title" : "Entrega",
-                                    "description": "La entrega se realiza todos los dias."
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-    elif "btncompra" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Los mejores articulos top en ofertas."
-            }
-        }
-    elif "btnvender" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": numero,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Excelente elección."
-            }
-        } 
+        enviar_mensaje_separado(data)
+    
     else:
         data = {
             "messaging_product": "whatsapp",
@@ -348,19 +292,15 @@ def enviar_mensajes_whatsapp(texto, numero):
             "text": {
                 "preview_url": False,
                 "body": (
-                    "🚀Hola, visita mi web para más información\n"
-                    "📌Por favor, ingresa un número #️⃣ para recibir información. \n"
-                    "1️⃣ Información del curso. ❔ \n"
-                    "2️⃣ Ubicación Local📍 \n"
-                    "3️⃣ Audio explicando curso 🎧 \n"
-                    "4️⃣ Video de introducción🎥\n"
-                    "5️⃣ Habla conmigo🫡 \n"
-                    "6️⃣ Horario de Atención🕙 \n"
-                    "0️⃣ Regresar al menú⏪"
+                    "No he comprendido tu mensaje, intentalo nuevamente."
                 )
             }
         }
+        enviar_mensaje_separado(data)
     
+
+    
+def enviar_mensaje_separado(data: dict):
     data = json.dumps(data)
     
     headers = {
